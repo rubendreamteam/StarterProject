@@ -1,0 +1,77 @@
+﻿/*!
+* File name:   grid.css
+* Description: Contains styles that define main page layout (page "sceleton").
+*              This includes placement of header, main content, navigation, page columns. Widgets and components will be nested within.
+*              OOCSS Grids: Grids are used to break any space into fractions, they can be nested and stacked. A unit can contain another line or it can contain other objects directly.
+* Version:     1.0
+*/
+
+/*** TABLE OF CONTENTS ***
+*
+* 1. OOCSS grid
+* 2. Page Layouts
+*/
+
+
+/* 1. OOCSS grid (https://github.com/stubbornella/oocss/wiki/Grids)
+----------------------------------------------------------------------------------------------------*/
+
+.line,.lastUnit{overflow:hidden; *overflow:visible;*zoom:1;}
+.unit{float:left;}
+.unitRight{float:right;}
+.size1of1{float:none;}
+.size1of2{width:50%;}
+.size1of3{width:33.33333%;}
+.size2of3{width:66.66666%;}
+.size1of4{width:25%;}
+.size3of4{width:75%;}
+.size1of5{width:20%;}
+.size2of5{width:40%;}
+.size3of5{width:60%;}
+.size4of5{width:80%;}
+.lastUnit{float:none;width:auto;_position:relative;_left:-3px;_margin-right:-3px;}
+
+
+/* 2. Page Layouts
+----------------------------------------------------------------------------------------------------*/
+
+/*
+Example:
+	page-grid
+		header-grid
+		content-grid
+			grid-1-1
+			grid-1-2
+				grid-2-1
+				grid-2-2
+		footer-grid
+*/
+
+
+/* Level 1 grids */
+.grid-1-1 {
+	width: 30%;
+	float: left;
+}
+.grid-1-2 {
+	width: 70%;
+	float: right;
+}
+
+/* Level 2 grids (nested in a level 1 grid) */
+.grid-2-1 {
+	
+}
+.grid-2-2 {
+	
+}
+
+
+
+
+
+
+
+
+
+

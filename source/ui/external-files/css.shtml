@@ -1,0 +1,9 @@
+<link rel="stylesheet" type="text/css" media="all" href="/starterproject/source/ui/basic/reset.css" />
+<link rel="stylesheet" type="text/css" media="all" href="/starterproject/source/ui/basic/normalize.css" />
+<link rel="stylesheet" type="text/css" media="all" href="/starterproject/source/ui/basic/mediaqueries.css" />
+<link rel="stylesheet" type="text/css" media="all" href="/starterproject/source/ui/basic/basic.css" />
+<link rel="stylesheet" type="text/css" media="all" href="/starterproject/source/ui/basic/grid.css" />
+<link rel="stylesheet" type="text/css" media="all" href="/starterproject/source/ui/page-modules/header/header.css" />
+<link rel="stylesheet" type="text/css" media="all" href="/starterproject/source/ui/page-modules/nav-main/nav-main.css" />
+<link rel="stylesheet" type="text/css" media="all" href="/starterproject/source/ui/page-modules/footer/footer.css" />
+

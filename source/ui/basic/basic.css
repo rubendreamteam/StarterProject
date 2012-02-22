@@ -1,0 +1,130 @@
+﻿/*!
+* File name:   basic.css
+* Description: Basic css styles used globally
+* Version:     1.0
+*/
+ 
+/*** TABLE OF CONTENTS ***
+*
+* 1. Misc
+* 2. Headings
+* 3. Links
+* 4. Text
+* 5. Lists
+* 6. Embedded Content
+* 7. Tables
+* 8. Forms
+*/
+
+
+/* 1. Misc
+----------------------------------------------------------------------------------------------------*/
+
+body {
+	padding: 15px;
+	font-family:  Arial, sans-serif;
+}
+/*elements used for accessibility*/
+.structural {
+    left: -9999px;
+    margin: 0;
+    position: absolute;
+}
+
+/* 2. Headings
+----------------------------------------------------------------------------------------------------*/
+h1, h2, h3, h4, h5, h6 {
+	color: #333;
+	line-height: 1.2em;
+	margin-bottom: 15px;
+	font-weight: bold;
+}
+h1 {
+	font-size: 2.6em;
+	font-weight: normal;
+}
+h2 {
+	font-size: 2em;
+}
+h3 {
+	font-size: 1.6em;
+	margin-bottom: 10px;
+}
+h4 {
+	font-size: 1.2em;
+	margin-bottom: 5px;
+}
+h5 {
+	font-size: 1em;
+	margin-bottom: 5px;
+}
+h6 {
+	font-size: 1em;
+	margin-bottom: 5px;
+}
+
+
+/* 3. Links
+----------------------------------------------------------------------------------------------------*/
+
+a:link, a:visited {
+  color: #e56718;
+}
+a:hover {
+  color: #000;
+}
+a:active {
+  color: #e56718;
+}
+
+/* 4. Text
+----------------------------------------------------------------------------------------------------*/
+p {
+	font-size: 1em;
+	line-height: 1.2em;
+	margin-bottom: 15px;
+}
+
+/* 5. Lists
+----------------------------------------------------------------------------------------------------*/
+ul, ol, dl {
+	margin-bottom: 15px;
+}
+ul ul, ol ol, dl dl {
+	margin: 5px 0 0 0;
+}
+	
+li, dt, dd {
+	font-size: 1em;
+	line-height: 1.2em;
+	margin-bottom: 5px;
+}
+
+/* 6. Embedded Content
+----------------------------------------------------------------------------------------------------*/
+
+img, svg, audio, video {
+	margin-bottom: 15px;
+}
+
+/* 7. Tables
+----------------------------------------------------------------------------------------------------*/
+
+table {
+	margin-bottom: 15px;
+}
+td, th {
+	padding: 5px;
+	border: 1px solid #ccc;
+	font-size: 1em;
+	line-height: 1.2em;
+}
+caption {
+	padding: 5px;
+}
+
+/* 8. Forms
+----------------------------------------------------------------------------------------------------*/
+fieldset {
+	margin-bottom: 15px;
+}

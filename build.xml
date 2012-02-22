@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+	Starter Project Build
+	Before you build, update the build.properties file with your own local paths.
+	Run "init" the first time you download the template to update the paths.
+	Call task 'build' to build a full release.
+-->
+<project name="StarterProject" default="build" basedir=".">
+
+    <target name="init.once"
+		description="Run this task the first time you download the template (after you have updated build.properties). This will replace all paths with your custom path - ${src.virt.path}"
+		depends="-load.properties">
+
+		<replace dir="${src.dir}" value="${src.virt.path}">
+			<include name="**/*.shtml"/>
+			<include name="**/*.html"/>
+			<include name="**/*.aspx"/>
+			<include name="**/*.css"/>
+			<include name="**/*.js"/>
+			<replacetoken><![CDATA[/starterproject/source/]]></replacetoken>
+		</replace>
+	</target>
+
+    <target name="build"
+		description="Default build task. Add tasks you want to run here."
+		depends="-load.properties, clean, copy.files, concat.css, concat.js, minify.css, minify.js, replace.links.css, replace.links.js, replace.version">
+	</target>
+	
+    <target name="-load.properties"
+		description="Set global variables.">
+    	<!-- Loads properties file -->
+		<loadproperties>
+			<file file="build.properties"/>
+		</loadproperties>
+		<!-- Loads file containing the links to JS files, and formats it as a comma-separated file list -->
+		<loadfile property="filelist.js" srcFile="${src.dir}/ui/external-files/js.shtml">
+			<filterchain>
+				<tokenfilter>
+					<replacestring from="${src.virt.path}" to=""/>
+				</tokenfilter>
+				<tokenfilter>
+					<replaceregex pattern='.script type="text/javascript" src="' replace="" />
+				</tokenfilter>
+				<tokenfilter>
+					<replaceregex pattern='"../script>' replace=", " />
+				</tokenfilter>
+			    <striplinebreaks/>
+			</filterchain>
+		</loadfile>
+		<!-- Loads file containing the links to CSS files, and formats it as a comma-separated file list -->
+		<loadfile property="filelist.css" srcFile="${src.dir}/ui/external-files/css.shtml">
+			<filterchain>
+				<tokenfilter>
+					<replacestring from="${src.virt.path}" to=""/>
+				</tokenfilter>
+				<tokenfilter>
+					<replaceregex pattern='.link rel="stylesheet" type="text/css" media="all" href="' replace="" />
+				</tokenfilter>
+				<tokenfilter>
+					<replaceregex pattern='" /.' replace=", " />
+				</tokenfilter>
+			    <striplinebreaks/>
+			</filterchain>
+		</loadfile>
+		<loadfile property="version" failonerror="no" srcFile="version.txt">
+			<filterchain><striplinebreaks/></filterchain>
+		</loadfile>
+    </target>
+
+	<target name="clean"
+		description="Destroys all generated files and dirs."
+		depends="-load.properties">
+		<delete dir="${build.dir}"/>
+	</target>
+	
+	<target name="copy.files"
+		description="Copy files from source to build directory. Replace all virtual paths."
+		depends="-load.properties">
+		<copy todir="${build.dir}/">
+			<fileset dir="${src.dir}">
+				<include name="**/*.shtml"/>
+				<include name="**/*.html"/>
+				<include name="**/*.aspx"/>
+			</fileset>
+			<filterchain>
+				<tokenfilter>
+				    <replacestring from="${src.virt.path}" to="${build.virt.path}"/>
+				</tokenfilter>
+			</filterchain>
+		</copy>
+		<copy todir="${build.dir}/">
+			<fileset dir="${src.dir}">
+				<include name="**/*.jpg"/>
+				<include name="**/*.png"/>
+				<include name="**/*.gif"/>
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="concat.css"
+		description="Concatenate css files listed in files-css.shtml"
+		depends="-load.properties">
+		<echo message="File list to concatenate: ${filelist.css}" />
+		<!-- Concatenates CSS files -->
+	    <concat destfile="${filename.concat.css}" fixlastline="yes">
+	    	<filelist dir="${src.dir}" files="${filelist.css}"/>
+	    </concat>
+	</target>
+
+	<target name="concat.js"
+		description="Concatenate js files listed in files-js.shtml"
+		depends="-load.properties">
+		<echo message="File list to concatenate: ${filelist.js}" />
+		<!-- Concatenates JS files -->
+	    <concat destfile="${filename.concat.js}" fixlastline="yes">
+	    	<filelist dir="${src.dir}" files="${filelist.js}"/>
+	    </concat>
+	</target>
+	
+	<target name="minify.css"
+		description="Minify css files"
+		depends="-load.properties, concat.css">
+	    <java jar="${yuicompressor.jar}" fork="true">
+	        <arg value="${build.dir}/common/css/global.css"/>
+			<arg line="--charset"/>
+	        <arg value="utf-8"/>
+			<arg line="--type"/>
+	        <arg value="css"/>
+			<arg line="-o"/>
+	        <arg value="${build.dir}/common/css/global-min.css"/>
+		</java>
+		<delete file="${filename.concat.css}"/>
+	</target>
+		
+	<target name="minify.js"
+		description="Minify javascript files"
+		depends="-load.properties, concat.js">
+	    <java jar="${yuicompressor.jar}" fork="true">
+	        <arg value="${build.dir}/common/js/global.js"/>
+			<arg line="--charset"/>
+	        <arg value="utf-8"/>
+			<arg line="--type"/>
+	        <arg value="js"/>
+			<arg line="-o"/>
+	        <arg value="${build.dir}/common/js/global-min.js"/>				    
+		</java>
+		<delete file="${filename.concat.js}"/>
+	</target>
+
+	<target name="replace.links.css"
+		description="Replace links to css files to the generated compressed css file"
+		depends="-load.properties, concat.css">
+		<!-- Removes all text in files-css.shtml -->
+		<replaceregexp byline="true">
+			<regexp pattern=".*"/>
+			<substitution expression=""/>
+			<fileset dir="${build.dir}/ui/external-files">
+				<include name="css.shtml"/>
+			</fileset>
+		</replaceregexp>
+		<!-- Adds link to the concatenated file -->
+		<echo file="${build.dir}/ui/external-files/files-css.shtml">
+<![CDATA[<link rel="stylesheet" type="text/css" media="all" href="]]>${build.virt.path}<![CDATA[common/css/global-min.css" />]]>
+		</echo>
+	</target>
+
+	<target name="replace.links.js"
+		description="Replace links to js files to the generated compressed js file"
+		depends="-load.properties, concat.js">
+		<!-- Removes all text in files-js.shtml -->
+		<replaceregexp byline="true">
+			<regexp pattern=".*"/>
+			<substitution expression=""/>
+			<fileset dir="${build.dir}/ui/external-files">
+				<include name="js.shtml"/>
+			</fileset>
+		</replaceregexp>
+		<!-- Adds link to the concatenated file -->
+		<echo file="${build.dir}/ui/external-files/files-js.shtml">
+<![CDATA[<script type="text/javascript" src="]]>${build.virt.path}<![CDATA[common/js/global-min.js"></script>]]>
+		</echo>
+	</target>
+
+	<target name="replace.version"
+		description="Sets version number in the description section of all CSS and JS files (from version.txt)"
+		depends="-load.properties, copy.files">
+		<replaceregexp match="@VERSION" replace="${version}" flags="g" byline="true">
+		    <fileset dir="${build.dir}" includes="**/*.js"/>
+			<fileset dir="${build.dir}" includes="**/*.css"/>
+		</replaceregexp>
+		<echo message="Replaced all @VERSION to ${version}." />
+	</target>
+
+	
+</project>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,36 @@
+<!--#include virtual="/starterproject/source/ui/meta/meta.shtml" -->
+
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<title>Home</title>
+
+</head>
+
+<body>
+
+	<div class="page-grid">
+
+		<div class="structural">
+			<p><a href="#content-main">Skip to main content</a></p>
+			<p><a href="#nav-main">Skip to main navigation</a></p>
+		</div>
+
+		<!-- HEADER -->
+		<div class="header-grid">
+			<!--#include virtual="/starterproject/source/ui/page-modules/header/header.shtml" -->
+		</div>
+
+		<!-- CONTENT -->
+		<div class="content-grid">
+			<h2>Main Content</h2>
+			<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
+		</div>
+
+		<!-- FOOTER -->
+		<div class="footer-grid">
+			<!--#include virtual="/starterproject/source/ui/page-modules/footer/footer.shtml" -->
+		</div>
+
+	</div>
+
+<!--#include virtual="/starterproject/source/ui/meta/meta-bottom.shtml" -->
