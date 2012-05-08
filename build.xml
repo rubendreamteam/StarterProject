@@ -33,7 +33,7 @@
 			<file file="build.properties"/>
 		</loadproperties>
 		<!-- Loads file containing the links to JS files, and formats it as a comma-separated file list -->
-		<loadfile property="filelist.js" srcFile="${src.dir}/ui/external-files/js.shtml">
+		<loadfile property="filelist.js" srcFile="${src.dir}/ui/external-files/scripts.shtml">
 			<filterchain>
 				<tokenfilter>
 					<replacestring from="${src.virt.path}" to=""/>
@@ -48,7 +48,7 @@
 			</filterchain>
 		</loadfile>
 		<!-- Loads file containing the links to CSS files, and formats it as a comma-separated file list -->
-		<loadfile property="filelist.css" srcFile="${src.dir}/ui/external-files/css.shtml">
+		<loadfile property="filelist.css" srcFile="${src.dir}/ui/external-files/stylesheets.shtml">
 			<filterchain>
 				<tokenfilter>
 					<replacestring from="${src.virt.path}" to=""/>
@@ -98,7 +98,7 @@
 	</target>
 
 	<target name="concat.css"
-		description="Concatenate css files listed in files-css.shtml"
+		description="Concatenate css files listed in stylesheets.shtml"
 		depends="-load.properties">
 		<echo message="File list to concatenate: ${filelist.css}" />
 		<!-- Concatenates CSS files -->
@@ -108,7 +108,7 @@
 	</target>
 
 	<target name="concat.js"
-		description="Concatenate js files listed in files-js.shtml"
+		description="Concatenate js files listed in scripts.shtml"
 		depends="-load.properties">
 		<echo message="File list to concatenate: ${filelist.js}" />
 		<!-- Concatenates JS files -->
@@ -155,11 +155,11 @@
 			<regexp pattern=".*"/>
 			<substitution expression=""/>
 			<fileset dir="${build.dir}/ui/external-files">
-				<include name="css.shtml"/>
+				<include name="stylesheets.shtml"/>
 			</fileset>
 		</replaceregexp>
 		<!-- Adds link to the concatenated file -->
-		<echo file="${build.dir}/ui/external-files/files-css.shtml">
+		<echo file="${build.dir}/ui/external-files/stylesheets.shtml">
 <![CDATA[<link rel="stylesheet" type="text/css" media="all" href="]]>${build.virt.path}<![CDATA[common/css/global-min.css" />]]>
 		</echo>
 	</target>
@@ -172,11 +172,11 @@
 			<regexp pattern=".*"/>
 			<substitution expression=""/>
 			<fileset dir="${build.dir}/ui/external-files">
-				<include name="js.shtml"/>
+				<include name="scripts.shtml"/>
 			</fileset>
 		</replaceregexp>
 		<!-- Adds link to the concatenated file -->
-		<echo file="${build.dir}/ui/external-files/files-js.shtml">
+		<echo file="${build.dir}/ui/external-files/scripts.shtml">
 <![CDATA[<script type="text/javascript" src="]]>${build.virt.path}<![CDATA[common/js/global-min.js"></script>]]>
 		</echo>
 	</target>

@@ -1,5 +1,4 @@
-<!--#include virtual="/starterproject/source/ui/meta/meta.shtml" -->
-
+<!--#include virtual="/starterproject/source/ui/meta/meta-top.shtml" -->
 	<meta name="description" content="">
 	<meta name="keywords" content="">
 	<title>Home</title>
@@ -17,7 +16,7 @@
 
 		<!-- HEADER -->
 		<div class="header-grid">
-			<!--#include virtual="/starterproject/source/ui/page-modules/header/header.shtml" -->
+			<!--#include virtual="/starterproject/source/modules/header/header.shtml" -->
 		</div>
 
 		<!-- CONTENT -->
@@ -28,7 +27,7 @@
 
 		<!-- FOOTER -->
 		<div class="footer-grid">
-			<!--#include virtual="/starterproject/source/ui/page-modules/footer/footer.shtml" -->
+			<!--#include virtual="/starterproject/source/modules/footer/footer.shtml" -->
 		</div>
 
 	</div>

@@ -1,6 +1,10 @@
 	<!-- JavaScript at the bottom for fast page loading -->
 
-	<!--#include virtual="/starterproject/source/ui/external-files/js.shtml" -->
+	<!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="/starterproject/source/ui/basic/lib/jquery-1.7.2.min.js"><\/script>')</script>
+
+	<!--#include virtual="/starterproject/source/ui/external-files/scripts.shtml" -->
 
 	<!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
 		chromium.org/developers/how-tos/chrome-frame-getting-started -->

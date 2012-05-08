@@ -1,0 +1,13 @@
+<!--#include virtual="/starterproject/source/ui/meta/meta-top.shtml" -->
+
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<title>Module Example</title>
+
+</head>
+
+<body>
+
+<!--#include virtual="/starterproject/source/modules/module/module.shtml" -->
+
+<!--#include virtual="/starterproject/source/ui/meta/meta-bottom.shtml" -->
