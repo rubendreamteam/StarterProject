@@ -30,6 +30,9 @@ dwsync.xml
 *.komodoproject
 .komodotools
 
+# Sublime Text 2
+*.sublime*
+
 # Folders to ignore
 .hg
 .svn
