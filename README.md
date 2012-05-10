@@ -1,3 +1,3 @@
-# StarterProject set to work with Grunt init
+# StarterProject set with Grunt	
 
-Just a couple of modifications to the folder structure to set a nice grunt setup
+Planning on adding grunt to the starterproject to be able to run jshint and csslint on the fly
