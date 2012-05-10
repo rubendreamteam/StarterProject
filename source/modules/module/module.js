@@ -1,4 +1,4 @@
-﻿/*!
+/*!
 * File name:   module.js
 * Description: Description of the module
 * Version:     1.0

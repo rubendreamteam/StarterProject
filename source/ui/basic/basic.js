@@ -1,4 +1,4 @@
-﻿/*!
+/*!
 * File name:   basic.js
 * Description: Site-wide behavior
 * Version:     1.0
