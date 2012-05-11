@@ -19,7 +19,7 @@ module.exports = function(grunt) {
           "ids": true,
           "import": false,
           "important": false,
-          "known-properties": false,
+          "known-properties": false, // Not nice, but the hack rules are not working
           "outline-none": false,
           "overqualified-elements": 2,
           "regex-selectors": false,
@@ -58,5 +58,33 @@ module.exports = function(grunt) {
 
   // Default task.
   grunt.registerTask('default', 'lint csslint qunit');
+
+  grunt.registerTask("testswarm", function( commit, configFile ) {
+    var test,
+    testswarm = require( "testswarm" ),
+    testBase = "http://uitesting.bgtpartners.com/git_projects/StarterProject", // Or set to your project's path
+    testUrls = [],
+    //config = grunt.file.readJSON( configFile );
+    tests = { // TestName: TestFile.html
+    };
+
+    for (test in tests) {
+      testUrls.push( testBase + tests[ test ] );
+    }
+
+    testswarm({
+      url: "http://uitesting.bgtpartners.com/",
+      pollInterval: 10000,
+      done: this.async()
+    }, {
+      authUsername: '', // Your github username
+      authToken: '', // Need a way to get this automatically. For now ask admin for it.
+      jobName: '', // Set your Project Name
+      runMax: 4,
+      "runNames[]": Object.keys(tests),
+      "runUrls[]": testUrls,
+      "browserSets[]": ["main"] // Will check the four main browsers. currently IE9, Firefox 12, Chrome and Safari (Latest)
+    });
+  });
 
 };
