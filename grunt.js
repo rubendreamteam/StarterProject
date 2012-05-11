@@ -15,17 +15,16 @@ module.exports = function(grunt) {
     },
     jshint: {
       options: {
-        /*curly: true,
+        curly: true,
         eqeqeq: true,
-        immed: true,
         latedef: true,
-        newcap: true,*/
-        noarg: false, // Allow the arguments.callee = arguments.callee.caller; for Paul Irish console wrapper
-        /*sub: true,
-        undef: true,
-        boss: true,
+        newcap: true,
+        noarg: true,
+        sub: true,
+        undef: false, // Allow console log script to pass. However, undefined variables will not be found
+        boss: false,
         eqnull: true,
-        browser: true,*/
+        browser: true,
         jquery: true
       }
     },
