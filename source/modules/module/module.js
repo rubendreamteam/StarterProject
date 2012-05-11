@@ -15,7 +15,7 @@ SITE.modulename = (function (my, $) {
 	my.init = function(element) {
 		el = element;
 		
-	}
+	};
 	
 	return my;
 	
