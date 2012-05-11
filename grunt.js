@@ -3,30 +3,11 @@ module.exports = function(grunt) {
 
   // Project configuration.
   grunt.initConfig({
-    meta: {
-      banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
-        '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
-        '<%= pkg.homepage ? "* " + pkg.homepage + "\n" : "" %>' +
-        '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
-        ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */'
-    },
-    concat: {
-      dist: {
-        src: ['<banner:meta.banner>', '<file_strip_banner:src/<%= pkg.name %>.js>'],
-        dest: 'dist/<%= pkg.name %>.js'
-      }
-    },
-    min: {
-      dist: {
-        src: ['<banner:meta.banner>', '<config:concat.dist.dest>'],
-        dest: 'dist/<%= pkg.name %>.min.js'
-      }
-    },
     qunit: {
       files: ['test/**/*.html']
     },
     lint: {
-      files: ['grunt.js', 'source/**/*.js', '!source/ui/basic/lib/*.js' 'source/test/**/*.js']
+      files: ['grunt.js', 'source/ui/*/*.js', , 'source/module/*.js' 'source/test/**/*.js']
     },
     watch: {
       files: '<config:lint.files>',
@@ -51,6 +32,6 @@ module.exports = function(grunt) {
   });
 
   // Default task.
-  grunt.registerTask('default', 'lint qunit concat min');
+  grunt.registerTask('default', 'lint qunit');
 
 };
