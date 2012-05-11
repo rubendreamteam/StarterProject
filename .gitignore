@@ -41,4 +41,7 @@ intermediate
 publish
 .idea
 
+# Node.js
+node_modules/
+
 build
