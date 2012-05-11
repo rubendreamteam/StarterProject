@@ -1,0 +1,19 @@
+{
+  "name": "StarterProject",
+  "description": "Set the starting folder structure for projects",
+  "version": "0.1.0",
+  "homepage": "https://github.com/bgtpartners/StarterProject",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bgtpartners/StarterProject.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bgtpartners/StarterProject/issues"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "~0.3.9",
+    "grunt-css": "latest"
+  },
+  "keywords": []
+}
