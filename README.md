@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # StarterProject
 
 ## Purpose
@@ -18,17 +17,3 @@ The two main purposes of the Starter Project are:
 - Starter Project comes with initial files and folders
 - It makes it easier to start on a new project
 - When new developers join the project, they are familiar with the project structure and can quickly get up to speed with the project
-
-
-
-
-
-
-
-
-
-=======
-# StarterProject set with Grunt	
-
-Planning on adding grunt to the starterproject to be able to run jshint and csslint on the fly
->>>>>>> Reopening pull request
